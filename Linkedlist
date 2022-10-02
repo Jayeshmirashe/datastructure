@@ -30,13 +30,16 @@ void printList(Node* start){
 //Inserting NODE at last
 Node* insertLast(Node* start,int value){
     Node *tmp,*p;
+    //tmp=(Node*)malloc(sizeof(Node))
     tmp=GetNode();
     tmp->data=value;
     tmp->link=NULL;
     
+    //if list is empty
     if(start==NULL){
         start=tmp;
     }
+    //Insert at the end of list
     else{
     p=start;
     while(p->link!=NULL)
