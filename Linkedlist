@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+//Code to create any Node
+typedef struct node Node;
+struct node{
+    int data;
+    Node* link;
+};
+
+//creation of Empty node
+Node* GetNode(){
+    Node* tmp;
+    tmp=(Node*)malloc(sizeof(Node));
+    if(!tmp){
+        printf("Out of Memory\n");
+        exit(1);
+    }
+    return tmp;
+}
+
+//Prints the NODE VALUES
+void printList(Node* start){
+    Node* p=start;
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p=p->link;
+    }
+}
+//Inserting NODE at last
+Node* insertLast(Node* start,int value){
+    Node *tmp,*p;
+    tmp=GetNode();
+    tmp->data=value;
+    tmp->link=NULL;
+    
+    if(start==NULL){
+        start=tmp;
+    }
+    else{
+    p=start;
+    while(p->link!=NULL)
+       p=p->link;
+    p->link=tmp;
+    }
+return start;
+}
+int main(){
+    Node* head=GetNode();
+    Node* first=GetNode();
+    Node* second=GetNode();
+    
+    head->data=10;
+    head->link=first;
+    
+    first->data=20;
+    first->link=second;
+    
+    second->data=30;
+    second->link=NULL;
+    
+    //function call
+    insertLast(head,100);
+    printList(head);
+}
