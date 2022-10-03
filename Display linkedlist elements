@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct node Node;
+struct node{
+    int data;
+    Node *link;
+};
+/* node structure */
+
+Node *GetNode(){
+    Node *tmp;
+    tmp=(Node*)malloc(sizeof(Node));
+    if(!tmp){
+        printf("Out of Memory");
+        exit(1);
+    }
+    return tmp;
+}
+/* returns pointer to node created in heap memory */
+
+void Display(Node *start){
+    Node *p;
+    if(start==NULL){
+        printf("list is empty\n");
+        exit(1);
+    }
+    p=start;
+    printf("list is:\n");
+    while(p!=NULL){
+        printf("%d ",p->data);
+        p=p->link;
+    }
+}
+/* traverse each node and print the data until last node */
+int main(){
+    Node *first,*middle,*last;
+    
+    first=GetNode();
+    middle=GetNode();
+    last=GetNode();
+    
+    first->data=10;
+    first->link=middle;
+    
+    middle->data=20;
+    middle->link=last;
+    
+    last->data=30;
+    last->link=NULL;
+    
+    Display(first);
+    
+}
