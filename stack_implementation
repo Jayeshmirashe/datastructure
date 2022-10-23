@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 5
+
+int stackArr[MAX];
+int top=-1;
+
+int isFull(){
+    if(top==MAX-1)
+        return(1);
+    else
+        return(0);
+}
+int isEmpty(){
+    if(top==-1)
+        return(1);
+    else
+        return(0);
+}
+void push(int item){
+    if(isFull()){
+        printf("stack is Overflow");
+        return;
+    }
+    else
+        stackArr[++top]=item;
+}
+int pop(){
+    int item;
+    if(isEmpty()){
+        printf("stack is Underflow");
+        exit(1);
+    }
+    item=stackArr[top];
+    top=top-1;
+    return item;
+}
+int peek(){
+    if(isEmpty()){
+        printf("stack is Underflow");
+        exit(1);
+    }
+    return stackArr[top];
+}
+void display(){
+    int i;
+    for(i=0;i<=top;i++){
+        printf("%d ",stackArr[i]);
+    }
+    printf("\n");
+}
+int main(){
+    int item;
+    push(10);
+    push(20);
+    push(30);
+    push(40);
+    display();
+    item= pop();
+    printf("popped item is %d \n",item);
+    display();
+    printf("top of stack is %d\n",peek());
+    display();
+    
+}
