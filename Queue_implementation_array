@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+
+int Q[MAX];
+int rear=-1,front=-1;
+
+void Enqueue(int item){
+    if(isFull()){
+        printf("Queue is full");
+        exit(1);
+    }
+    if(front=-1)
+        front=front+1;
+    rear=rear+1;
+    Q[rear]=item;
+    
+}
+int Dequeue(){
+    int item;
+    if(isEmpty()){
+        printf("Queue is empty");
+        exit(1);
+    }
+    item=Q[front];
+    front=front+1;
+    return item;
+}
+int Peek(){
+    if(isEmpty()){
+        printf("Queue is empty");
+        exit(1);
+    }
+    return Q[front];
+    
+}
+void Display(){
+    printf("Queue is:");
+    for(int i=front;i<=rear;i++){
+        printf(" %d",Q[i]);
+    }
+    printf("\n");
+}
+int isFull(){
+    if(rear==MAX-1)
+        return(1);
+    else
+        return(0);
+}
+int isEmpty(){
+    if(front==-1 || front==rear+1)
+        return(1);
+    else
+        return(0);
+}
+int main(){
+    int item;
+    Enqueue(10);
+    Enqueue(20);
+    Enqueue(30);
+    Enqueue(40);
+    Enqueue(50);
+    Display();
+    Dequeue();
+    Display();
+    printf("top element is %d",Peek());
+    
+}
