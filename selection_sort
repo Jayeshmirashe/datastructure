@@ -1,0 +1,33 @@
+#include<stdio.h>
+
+void swap(int *x,int *y){
+    int temp;
+    temp=*x;
+    *x=*y;
+    *y=temp;
+}
+void selectionSort(int arr[],int n){
+    int i,j,min_index;
+    for(int i=0;i<n-1;i++){
+        min_index=i;
+        for(j=i+1;j<n;j++){
+            if(arr[j]<arr[min_index])
+                min_index=j;
+        }
+        if(min_index!=i)
+            swap(&arr[i],&arr[min_index]);
+    } 
+}
+void printArray(int arr[],int size){
+    for(int i=0;i<size;i++){
+        printf("%d ",arr[i]);
+    }
+}
+int main(){
+    int arr[6]={20,40,10,60,30,90};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    printf("array is :");
+    selectionSort(arr,n);
+    printArray(arr,n);
+}
+
